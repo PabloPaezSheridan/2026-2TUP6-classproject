@@ -1,4 +1,4 @@
-namespace web.Enums;
+namespace Services.Enums;
 
 public enum Cities
 {
