@@ -1,4 +1,6 @@
-using Services;
+using Application.Services;
+using Domain.Interfaces;
+using Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,7 +8,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
-builder.Services.AddScoped<PopulationCalculation>();
+
+#region Dependency Injection
+
+builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+// builder.Services.AddScoped<PopulationCalculation>();
+#endregion
+
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
