@@ -1,6 +1,8 @@
 using Application.Services;
 using Domain.Interfaces;
+using Infrastructure;
 using Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 // builder.Services.AddScoped<PopulationCalculation>();
 #endregion
 
+builder.Services.AddDbContext<StudentsForumContext>(dbContextOptions => dbContextOptions.UseSqlServer("Server=127.0.0.1;Database=myDataBase;Uid=pablopaezsheridan;Pwd=LocalPassword1;Port=3306;"));
 
 
 
