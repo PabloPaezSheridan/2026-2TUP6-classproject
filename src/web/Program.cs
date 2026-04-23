@@ -18,7 +18,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 // builder.Services.AddScoped<PopulationCalculation>();
 #endregion
 
-builder.Services.AddDbContext<StudentsForumContext>(dbContextOptions => dbContextOptions.UseSqlServer("Server=127.0.0.1;Database=myDataBase;Uid=pablopaezsheridan;Pwd=LocalPassword1;Port=3306;"));
+builder.Services.AddDbContext<StudentsForumContext>(dbContextOptions => dbContextOptions.UseSqlServer("Server=127.0.0.1;Database=StudentsForum;User Id=sa;Password=LocalPassword1;Encrypt=true;TrustServerCertificate=true;"));
 
 
 
