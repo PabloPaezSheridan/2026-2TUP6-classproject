@@ -10,10 +10,10 @@ public class UserRepository : IUserRepository
     private readonly StudentsForumContext _studentsForumContext;
     public UserRepository(StudentsForumContext studentsForumContext)
     {
-        _studentsForumContext = studentsForumContext
+        _studentsForumContext = studentsForumContext;
     }
 
-    public List<User> Get()
+    public List<User> GetUsers()
     {
         return new List<User>
         {
@@ -36,8 +36,8 @@ public class UserRepository : IUserRepository
         _studentsForumContext.SaveChangesAsync();
     }
 
-    public User Get(int id)
+    public User? Get(int id)
     {
-        _studentsForumContext.Users.
+        return _studentsForumContext.Users.FirstOrDefault(u => u.Id == id);
     }
 }
