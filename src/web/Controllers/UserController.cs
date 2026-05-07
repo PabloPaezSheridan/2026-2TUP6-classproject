@@ -1,5 +1,6 @@
 using Application.Services;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace web.Controllers
@@ -20,6 +21,21 @@ namespace web.Controllers
             var users = _userService.GetAllUsers();
             return Ok(users);
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteUser([FromRoute]int id, [FromQuery] string mode)
+        {
+            try
+            {
+                _userService.DeleteUser(id, mode);
+                return NoContent();
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+        }
+
  
     }
 }

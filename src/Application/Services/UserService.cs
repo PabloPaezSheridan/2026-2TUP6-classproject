@@ -16,4 +16,19 @@ public class UserService
     {
         return _userRepository.GetUsers();
     }
+
+    public void DeleteUser(int id, string mode)
+    {
+        if (mode == "logic")
+        {
+            User userToRemove = _userRepository.Get(id);
+            if (userToRemove.IsActive)
+                userToRemove.IsActive = false;
+                _userRepository.Update(userToRemove);
+        }
+        else
+        {
+            _userRepository.Delete(id);
+        }
+    }
 }
