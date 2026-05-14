@@ -13,6 +13,12 @@ public class User
     public DateTime? DateOfBirth { get; set; } = null;
     public Role Role {get; set;} = Role.User;
 
+    private string _password = string.Empty;
+    public string Password
+    {
+        get => _password;
+        set => _password = BCrypt.Net.BCrypt.HashPassword(value);
+    }
     public bool IsActive {get; set;} = true;
 }
 

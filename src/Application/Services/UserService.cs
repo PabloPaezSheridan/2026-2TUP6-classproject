@@ -12,6 +12,10 @@ public class UserService
         _userRepository = userRepository;
     }
 
+    public User? Get(string email)
+    {
+        return _userRepository.Get(email);
+    }
     public List<User> GetAllUsers()
     {
         return _userRepository.GetUsers();
@@ -31,4 +35,15 @@ public class UserService
             _userRepository.Delete(id);
         }
     }
+
+    public bool IsValidUser(string email, string password)
+    {
+        User? userToValidate = _userRepository.Get(email);
+        if(userToValidate is null)
+            return false;
+        else if(userToValidate.Password == password)
+            return true;
+        return false;
+    }
+
 }

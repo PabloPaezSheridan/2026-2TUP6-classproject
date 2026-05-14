@@ -40,4 +40,9 @@ public class UserRepository : IUserRepository
     {
         return _studentsForumContext.Users.FirstOrDefault(u => u.Id == id);
     }
+
+    public User? Get(string email)
+    {
+        return _studentsForumContext.Users.FirstOrDefault(u => u.Email == email && u.IsActive == true);
+    }
 }
