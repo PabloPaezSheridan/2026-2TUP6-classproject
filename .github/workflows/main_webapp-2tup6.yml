@@ -32,10 +32,10 @@ jobs:
           dotnet-version: '10.x'
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build src/2026-2tup6-classproject.sln --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+        run: dotnet publish src/2026-2tup6-classproject.sln -c Release -o "${{env.DOTNET_ROOT}}/myapp"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
